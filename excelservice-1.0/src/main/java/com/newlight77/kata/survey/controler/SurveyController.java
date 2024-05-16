@@ -6,6 +6,7 @@ import com.newlight77.kata.survey.service.ExportCampaignService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("api/survey")
 public class SurveyController {
 
     private final ExportCampaignService exportCampaignService;
@@ -14,27 +15,27 @@ public class SurveyController {
       this.exportCampaignService = exportCampaignService;
     }
 
-    @RequestMapping(value = "/api/survey/create", method = RequestMethod.POST)
+    @PostMapping(value = "/create")
     public void createSurvey(@RequestBody final Survey survey) {
         exportCampaignService.creerSurvey(survey);
     }
 
-    @RequestMapping(value = "/api/survey/get", method = RequestMethod.GET)
+    @GetMapping(value = "/get")
     public Survey getSurvey(@RequestParam final String id) {
         return exportCampaignService.getSurvey(id);
     }
 
-    @RequestMapping(value = "/api/survey/campaign/create", method = RequestMethod.POST)
+    @PostMapping(value = "/campaign/create")
     public void createCampaign(@RequestBody final Campaign campaign) {
         exportCampaignService.createCampaign(campaign);
     }
 
-    @RequestMapping(value = "/api/survey/campaign/get", method = RequestMethod.GET)
+    @GetMapping(value = "/campaign/get")
     public Campaign getCampaign(@RequestParam final String id) {
         return exportCampaignService.getCampaign(id);
     }
 
-    @RequestMapping(value = "/api/survey/campaign/export", method = RequestMethod.POST)
+    @PostMapping(value = "/campaign/export")
     public void exportCampaign(@RequestParam final String campaignId) {
 
         final Campaign campaign = exportCampaignService.getCampaign(campaignId);
