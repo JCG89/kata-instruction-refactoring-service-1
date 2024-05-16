@@ -3,17 +3,15 @@ package com.newlight77.kata.survey.controler;
 import com.newlight77.kata.survey.model.Campaign;
 import com.newlight77.kata.survey.model.Survey;
 import com.newlight77.kata.survey.service.ExportCampaignService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("api/survey")
 public class SurveyController {
 
     private final ExportCampaignService exportCampaignService;
-
-    public SurveyController(final ExportCampaignService exportCampaignService) {
-      this.exportCampaignService = exportCampaignService;
-    }
 
     @PostMapping(value = "/create")
     public void createSurvey(@RequestBody final Survey survey) {
