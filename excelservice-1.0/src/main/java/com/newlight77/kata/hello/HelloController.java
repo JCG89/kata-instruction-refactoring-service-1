@@ -7,7 +7,7 @@ public class HelloController {
 
     @GetMapping(value = "/api/hello")
     public String createSurvey() {
-        return "Hello World!";
+        return "Hello Jean!";
     }
 
 }
